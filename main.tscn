@@ -1,11 +1,46 @@
-[gd_scene load_steps=3 format=3 uid="uid://dweaukumcs380"]
+[gd_scene load_steps=3 format=3 uid="uid://b6vt11wvugqns"]
 
-[ext_resource type="Script" path="res://main.gd" id="1_wqhtb"]
+[ext_resource type="Script" path="res://scripts/virtual_window.gd" id="2_1h6b5"]
 [ext_resource type="Texture2D" uid="uid://cnsjxx1tmkeu6" path="res://test.jpg" id="2_4m0ed"]
 
-[node name="Node2D" type="Node2D"]
-script = ExtResource("1_wqhtb")
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1920.0
+offset_bottom = -1080.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+metadata/_edit_lock_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1693, 1063)
+[node name="VirtualWindow" type="Control" parent="."]
+unique_name_in_owner = true
+clip_children = 1
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 10000.0
+offset_bottom = 10000.0
+mouse_filter = 1
+script = ExtResource("2_1h6b5")
+metadata/_edit_lock_ = true
+
+[node name="World" type="Node2D" parent="VirtualWindow"]
+unique_name_in_owner = true
+
+[node name="Background" type="Sprite2D" parent="VirtualWindow/World"]
+position = Vector2(960, 540)
 texture = ExtResource("2_4m0ed")
+metadata/_edit_lock_ = true
+
+[node name="VirtualWindowStart" type="Control" parent="VirtualWindow"]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = 1118.0
+offset_top = 356.0
+offset_right = 1669.0
+offset_bottom = 755.0
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
