@@ -21,7 +21,7 @@ func _process(delta):
 	if window.current_screen != screen:
 		reset_window()
 	
-func reset_window():
+func reset_window():	
 	window = get_window()
 	screen = window.current_screen
 	

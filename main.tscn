@@ -1,7 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://b6vt11wvugqns"]
+[gd_scene load_steps=7 format=3 uid="uid://b6vt11wvugqns"]
 
 [ext_resource type="Script" path="res://scripts/virtual_window.gd" id="2_1h6b5"]
 [ext_resource type="Texture2D" uid="uid://cnsjxx1tmkeu6" path="res://test.jpg" id="2_4m0ed"]
+[ext_resource type="Texture2D" uid="uid://ccq8r6dpuwrac" path="res://icon.svg" id="2_jjbk5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wwj15"]
+size = Vector2(128, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sjw2k"]
+size = Vector2(2048, 2048)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rlg7o"]
+size = Vector2(4096, 2048)
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -35,6 +45,80 @@ position = Vector2(960, 540)
 texture = ExtResource("2_4m0ed")
 metadata/_edit_lock_ = true
 
+[node name="Actor" type="RigidBody2D" parent="VirtualWindow/World"]
+position = Vector2(1422, 516)
+can_sleep = false
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VirtualWindow/World/Actor"]
+shape = SubResource("RectangleShape2D_wwj15")
+
+[node name="ActorSprite2D" type="Sprite2D" parent="VirtualWindow/World/Actor"]
+texture = ExtResource("2_jjbk5")
+
+[node name="WorldBorder" type="StaticBody2D" parent="VirtualWindow/World"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VirtualWindow/World/WorldBorder"]
+position = Vector2(2944, 540)
+shape = SubResource("RectangleShape2D_sjw2k")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="VirtualWindow/World/WorldBorder"]
+position = Vector2(960, -1024)
+shape = SubResource("RectangleShape2D_rlg7o")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="VirtualWindow/World/WorldBorder"]
+position = Vector2(960, 2104)
+shape = SubResource("RectangleShape2D_rlg7o")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="VirtualWindow/World/WorldBorder"]
+position = Vector2(-2048, 1080)
+shape = SubResource("RectangleShape2D_sjw2k")
+
+[node name="Walls" type="Node2D" parent="VirtualWindow/World"]
+unique_name_in_owner = true
+
+[node name="WallLeft" type="RigidBody2D" parent="VirtualWindow/World/Walls"]
+unique_name_in_owner = true
+can_sleep = false
+freeze = true
+freeze_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VirtualWindow/World/Walls/WallLeft"]
+position = Vector2(147, 328)
+shape = SubResource("RectangleShape2D_sjw2k")
+
+[node name="WallBottom" type="RigidBody2D" parent="VirtualWindow/World/Walls"]
+unique_name_in_owner = true
+can_sleep = false
+freeze = true
+freeze_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VirtualWindow/World/Walls/WallBottom"]
+position = Vector2(1422, 1733)
+shape = SubResource("RectangleShape2D_sjw2k")
+
+[node name="WallTop" type="RigidBody2D" parent="VirtualWindow/World/Walls"]
+unique_name_in_owner = true
+can_sleep = false
+freeze = true
+freeze_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VirtualWindow/World/Walls/WallTop"]
+position = Vector2(1558, -619)
+shape = SubResource("RectangleShape2D_sjw2k")
+
+[node name="WallRight" type="RigidBody2D" parent="VirtualWindow/World/Walls"]
+unique_name_in_owner = true
+can_sleep = false
+freeze = true
+freeze_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VirtualWindow/World/Walls/WallRight"]
+position = Vector2(2655, 520)
+shape = SubResource("RectangleShape2D_sjw2k")
+
 [node name="VirtualWindowStart" type="Control" parent="VirtualWindow"]
 unique_name_in_owner = true
 anchors_preset = 0
@@ -42,5 +126,6 @@ offset_left = 1118.0
 offset_top = 356.0
 offset_right = 1669.0
 offset_bottom = 755.0
+mouse_filter = 1
 
 [node name="Polygon2D" type="Polygon2D" parent="."]

@@ -42,6 +42,11 @@ var resizeRight : bool
 var resizeTop : bool
 var resizeBottom : bool
 
+var left_relative_position : Vector2
+var right_relative_position : Vector2
+var top_relative_position : Vector2
+var bottom_relative_position : Vector2
+
 @export var ResizeThreshold := 25
 
 func _ready():
@@ -62,26 +67,36 @@ func _unhandled_input(event):
 			set_position(initialPosition + displacement)
 			%World.set_position(-initialPosition - displacement)
 			update_mouse_passthrough()
-		
+			
+			# Move the walls to align with the virtual window
+			%WallLeft.set_position(initialPosition + left_relative_position + displacement)
+			%WallRight.set_position(initialPosition + right_relative_position + displacement)
+			%WallTop.set_position(initialPosition + top_relative_position + displacement)
+			%WallBottom.set_position(initialPosition + bottom_relative_position + displacement)
+			
 		if isResizing:
 			var newWidth = get_size().x
 			var newHeight = get_size().y
 			
 			if resizeRight:
 				newWidth = initialSize.x + displacement.x
+				%WallRight.set_position(initialPosition + right_relative_position + displacement)
 				
 			if resizeBottom:
 				newHeight = initialSize.y + displacement.y
+				%WallBottom.set_position(initialPosition + bottom_relative_position + displacement)
 				
 			if resizeLeft:
 				newWidth = initialSize.x - displacement.x
 				set_position(Vector2(initialPosition.x - (newWidth - initialSize.x), get_position().y))
 				%World.set_position(-Vector2(initialPosition.x - (newWidth - initialSize.x), get_position().y))
+				%WallLeft.set_position(initialPosition + left_relative_position + displacement)
 			
 			if resizeTop:
 				newHeight = initialSize.y - displacement.y
 				set_position(Vector2(get_position().x, initialPosition.y - (newHeight - initialSize.y)))
 				%World.set_position(-Vector2(get_position().x, initialPosition.y - (newHeight - initialSize.y)))
+				%WallTop.set_position(initialPosition + top_relative_position + displacement)
 			
 			set_size(Vector2(newWidth, newHeight))
 			update_mouse_passthrough()
@@ -125,6 +140,12 @@ func _unhandled_input(event):
 			start = event.position
 			initialPosition = get_global_position()
 			isMoving = true
+		
+		# Get initial relative positions of walls
+		left_relative_position = %WallLeft.get_position() - initialPosition
+		right_relative_position = %WallRight.get_position() - initialPosition
+		top_relative_position = %WallTop.get_position() - initialPosition
+		bottom_relative_position = %WallBottom.get_position() - initialPosition
 			
 	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and !event.pressed:
 		# Left mouse just released
