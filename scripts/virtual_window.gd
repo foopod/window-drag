@@ -50,9 +50,10 @@ var bottom_relative_position : Vector2
 @export var ResizeThreshold := 25
 
 func _ready():
+	var virtual_window_start = get_node("World/LevelOne/VirtualWindowStart")
 	# The virtual window will start with the same position and size as VirtualWindowStart
-	set_position(%VirtualWindowStart.get_position())
-	set_size(%VirtualWindowStart.get_size())
+	set_position(virtual_window_start.get_position())
+	set_size(virtual_window_start.get_size())
 	%World.set_position(-get_global_position())
 
 func _unhandled_input(event):
