@@ -80,23 +80,23 @@ func _unhandled_input(event):
 			
 			if resizeRight:
 				newWidth = initialSize.x + displacement.x
-				%WallRight.set_position(initialPosition + right_relative_position + displacement)
+				%WallRight.set_position(Vector2((initialPosition + right_relative_position + displacement).x, %WallRight.get_position().y))
 				
 			if resizeBottom:
 				newHeight = initialSize.y + displacement.y
-				%WallBottom.set_position(initialPosition + bottom_relative_position + displacement)
+				%WallBottom.set_position(Vector2(%WallBottom.get_position().x, (initialPosition + bottom_relative_position + displacement).y))
 				
 			if resizeLeft:
 				newWidth = initialSize.x - displacement.x
 				set_position(Vector2(initialPosition.x - (newWidth - initialSize.x), get_position().y))
 				%World.set_position(-Vector2(initialPosition.x - (newWidth - initialSize.x), get_position().y))
-				%WallLeft.set_position(initialPosition + left_relative_position + displacement)
+				%WallLeft.set_position(Vector2((initialPosition + left_relative_position + displacement).x, %WallLeft.get_position().y))
 			
 			if resizeTop:
 				newHeight = initialSize.y - displacement.y
 				set_position(Vector2(get_position().x, initialPosition.y - (newHeight - initialSize.y)))
 				%World.set_position(-Vector2(get_position().x, initialPosition.y - (newHeight - initialSize.y)))
-				%WallTop.set_position(initialPosition + top_relative_position + displacement)
+				%WallTop.set_position(Vector2(%WallTop.get_position().x, (initialPosition + top_relative_position + displacement).y))
 			
 			set_size(Vector2(newWidth, newHeight))
 			update_mouse_passthrough()
