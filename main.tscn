@@ -150,5 +150,4 @@ axis_stretch_vertical = 1
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 
-[connection signal="area_exited" from="VirtualWindow/World/WorldBorder/Bottom/Area2D" to="VirtualWindow/World/WorldBorder/Bottom" method="_on_area_2d_area_exited"]
-[connection signal="body_exited" from="VirtualWindow/World/WorldBorder/Bottom/Area2D" to="VirtualWindow/World/WorldBorder/Bottom" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="VirtualWindow/World/WorldBorder/Bottom/Area2D" to="VirtualWindow/World/WorldBorder/Bottom" method="_on_area_2d_body_entered"]
