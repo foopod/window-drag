@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://xqfn1gelasda" path="res://sprites/start.png" id="2_x58ik"]
 [ext_resource type="Texture2D" uid="uid://nhfylr68tgc8" path="res://sprites/windows.png" id="3_w2qfj"]
 [ext_resource type="Script" path="res://scripts/ball.gd" id="5_yekq3"]
-[ext_resource type="Texture2D" uid="uid://b5ququx8r7n83" path="res://sprites/ball.png" id="6_5kx5g"]
+[ext_resource type="Texture2D" uid="uid://bfclpirgfhh2q" path="res://sprites/trash-icon.png" id="6_867le"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wwj15"]
 size = Vector2(287, 46)
@@ -35,6 +35,7 @@ position = Vector2(960, 600)
 texture = ExtResource("3_w2qfj")
 
 [node name="Actor" type="RigidBody2D" parent="."]
+texture_filter = 1
 position = Vector2(1233, 980)
 collision_layer = 3
 collision_mask = 3
@@ -69,8 +70,9 @@ metadata/_edit_group_ = true
 shape = SubResource("CircleShape2D_ug526")
 
 [node name="Sprite2D" type="Sprite2D" parent="Ball"]
+texture_filter = 1
 scale = Vector2(1.4375, 1.4375)
-texture = ExtResource("6_5kx5g")
+texture = ExtResource("6_867le")
 
 [node name="BricksContainer" type="Node2D" parent="."]
 unique_name_in_owner = true
