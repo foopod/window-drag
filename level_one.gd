@@ -19,7 +19,7 @@ func _ready():
 				brick.column = col
 				var sprite = brick.get_child(0)
 				sprite.frame = rng.randi_range(0,9)
-				add_child(brick)
+				%BricksContainer.add_child(brick)
 			else:
 				Global.iconData[row].append(false)
 	pass

@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://level_one.gd" id="1_vqpxh"]
 [ext_resource type="Texture2D" uid="uid://xqfn1gelasda" path="res://sprites/start.png" id="2_x58ik"]
 [ext_resource type="PackedScene" uid="uid://h04tov5g3i7t" path="res://brick.tscn" id="2_y44di"]
-[ext_resource type="Script" path="res://ball.gd" id="5_avoh8"]
+[ext_resource type="Script" path="res://scripts/ball.gd" id="5_yekq3"]
 [ext_resource type="Texture2D" uid="uid://b5ququx8r7n83" path="res://sprites/ball.png" id="6_5kx5g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wwj15"]
@@ -59,8 +59,10 @@ mass = 50.0
 inertia = 26.7
 physics_material_override = SubResource("PhysicsMaterial_gsyje")
 gravity_scale = 0.0
+max_contacts_reported = 32
 contact_monitor = true
-script = ExtResource("5_avoh8")
+script = ExtResource("5_yekq3")
+brick_scene = ExtResource("2_y44di")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
@@ -69,3 +71,8 @@ shape = SubResource("CircleShape2D_ug526")
 [node name="Sprite2D" type="Sprite2D" parent="Ball"]
 scale = Vector2(1.4375, 1.4375)
 texture = ExtResource("6_5kx5g")
+
+[node name="BricksContainer" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[connection signal="body_entered" from="Ball" to="Ball" method="_on_body_entered"]

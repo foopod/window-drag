@@ -1,22 +1,19 @@
-extends CollisionShape2D
+extends RigidBody2D
+
+var rng = RandomNumberGenerator.new()
 
 @export var brick_scene: PackedScene
 
-var rng
+@export var min_speed = 300
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	rng = RandomNumberGenerator.new()
-	pass # Replace with function body.
+func _integrate_forces(state):
+	var velocity : Vector2 = state.get_linear_velocity()
+	var speed = velocity.length()
+	if speed < min_speed && speed != 0:
+		state.set_linear_velocity(min_speed * velocity.normalized())
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
-func _on_area_2d_body_entered(body : Node):
-	if body.name == "Ball":
+func _on_body_entered(body):
+	if body.name == "WorldBorderBottom":
 		var count = 0
 		for row in Global.iconData.size():
 			for column in Global.iconData[row].size():
@@ -32,5 +29,4 @@ func _on_area_2d_body_entered(body : Node):
 						brick.column = column
 						var sprite = brick.get_child(0)
 						sprite.frame = rng.randi_range(0,9)
-						%LevelOne.add_child(brick)
-	pass # Replace with function body.
+						%BricksContainer.add_child(brick)
