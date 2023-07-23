@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dweaukumcs380"]
+[gd_scene load_steps=8 format=3 uid="uid://dweaukumcs380"]
 
 [ext_resource type="Script" path="res://scripts/virtual_window.gd" id="2_1h6b5"]
 [ext_resource type="PackedScene" uid="uid://dy7mn335sodxp" path="res://level_one.tscn" id="2_xdf2g"]
@@ -8,6 +8,15 @@ size = Vector2(2048, 2048)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rlg7o"]
 size = Vector2(4096, 2048)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_c0aus"]
+bounce = 0.2
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lhtgy"]
+friction = 0.1
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nn202"]
+bounce = 0.2
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -63,6 +72,7 @@ unique_name_in_owner = true
 
 [node name="WallLeft" type="RigidBody2D" parent="VirtualWindow/World/Walls"]
 unique_name_in_owner = true
+physics_material_override = SubResource("PhysicsMaterial_c0aus")
 can_sleep = false
 freeze = true
 freeze_mode = 1
@@ -73,6 +83,7 @@ shape = SubResource("RectangleShape2D_sjw2k")
 
 [node name="WallBottom" type="RigidBody2D" parent="VirtualWindow/World/Walls"]
 unique_name_in_owner = true
+physics_material_override = SubResource("PhysicsMaterial_lhtgy")
 can_sleep = false
 freeze = true
 freeze_mode = 1
@@ -93,6 +104,7 @@ shape = SubResource("RectangleShape2D_sjw2k")
 
 [node name="WallRight" type="RigidBody2D" parent="VirtualWindow/World/Walls"]
 unique_name_in_owner = true
+physics_material_override = SubResource("PhysicsMaterial_nn202")
 can_sleep = false
 freeze = true
 freeze_mode = 1
