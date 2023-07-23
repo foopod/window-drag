@@ -1,13 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://dweaukumcs380"]
+[gd_scene load_steps=11 format=3 uid="uid://dweaukumcs380"]
 
 [ext_resource type="Script" path="res://scripts/virtual_window.gd" id="2_1h6b5"]
 [ext_resource type="PackedScene" uid="uid://dy7mn335sodxp" path="res://level_one.tscn" id="2_xdf2g"]
+[ext_resource type="Script" path="res://scripts/Bottom_Wall.gd" id="3_mfv8o"]
+[ext_resource type="PackedScene" uid="uid://h04tov5g3i7t" path="res://brick.tscn" id="4_shqs1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sjw2k"]
 size = Vector2(2048, 2048)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rlg7o"]
 size = Vector2(4096, 2048)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6x6be"]
+size = Vector2(2571, 1047)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_c0aus"]
 bounce = 0.2
@@ -46,6 +51,7 @@ metadata/_edit_lock_ = true
 unique_name_in_owner = true
 
 [node name="LevelOne" parent="VirtualWindow/World" instance=ExtResource("2_xdf2g")]
+unique_name_in_owner = true
 
 [node name="WorldBorder" type="StaticBody2D" parent="VirtualWindow/World"]
 metadata/_edit_lock_ = true
@@ -59,9 +65,17 @@ shape = SubResource("RectangleShape2D_sjw2k")
 position = Vector2(960, -1024)
 shape = SubResource("RectangleShape2D_rlg7o")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="VirtualWindow/World/WorldBorder"]
+[node name="Bottom" type="CollisionShape2D" parent="VirtualWindow/World/WorldBorder"]
 position = Vector2(960, 2104)
 shape = SubResource("RectangleShape2D_rlg7o")
+script = ExtResource("3_mfv8o")
+brick_scene = ExtResource("4_shqs1")
+
+[node name="Area2D" type="Area2D" parent="VirtualWindow/World/WorldBorder/Bottom"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VirtualWindow/World/WorldBorder/Bottom/Area2D"]
+position = Vector2(-54.5, -533.5)
+shape = SubResource("RectangleShape2D_6x6be")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="VirtualWindow/World/WorldBorder"]
 position = Vector2(-1024, 500)
@@ -122,3 +136,6 @@ position = Vector2(2574, 163)
 shape = SubResource("RectangleShape2D_sjw2k")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
+
+[connection signal="area_exited" from="VirtualWindow/World/WorldBorder/Bottom/Area2D" to="VirtualWindow/World/WorldBorder/Bottom" method="_on_area_2d_area_exited"]
+[connection signal="body_exited" from="VirtualWindow/World/WorldBorder/Bottom/Area2D" to="VirtualWindow/World/WorldBorder/Bottom" method="_on_area_2d_body_exited"]

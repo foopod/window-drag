@@ -10,6 +10,8 @@ var target_height = ProjectSettings.get_setting("display/window/size/viewport_he
 var target_width = ProjectSettings.get_setting("display/window/size/viewport_width")
 @onready var virtual_window : Control = get_node("/root/Main/VirtualWindow")
 
+var iconData = []
+
 ## Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if first_load:
