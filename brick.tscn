@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://h04tov5g3i7t"]
+[gd_scene load_steps=15 format=3 uid="uid://h04tov5g3i7t"]
 
 [ext_resource type="Script" path="res://scripts/Brick.gd" id="1_dsyse"]
 [ext_resource type="Texture2D" uid="uid://xwukp6pkajrb" path="res://sprites/icons.png" id="2_wbpl7"]
@@ -81,17 +81,16 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p2b34"]
-size = Vector2(87, 80)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r5whx"]
 size = Vector2(79, 73)
 
 [node name="Brick" type="RigidBody2D"]
 position = Vector2(1109, 585)
-max_contacts_reported = 3
+max_contacts_reported = 32
 contact_monitor = true
+can_sleep = false
 freeze = true
+freeze_mode = 1
 script = ExtResource("1_dsyse")
 metadata/_edit_group_ = true
 
@@ -99,12 +98,6 @@ metadata/_edit_group_ = true
 texture_filter = 1
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_ajej3")
-
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(1.5, 0)
-shape = SubResource("RectangleShape2D_p2b34")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -0.5)
