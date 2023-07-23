@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dweaukumcs380"]
 
 [ext_resource type="Script" path="res://scripts/virtual_window.gd" id="2_1h6b5"]
-[ext_resource type="PackedScene" uid="uid://5hqtemf8yyb2" path="res://level_one.tscn" id="2_xdf2g"]
+[ext_resource type="PackedScene" uid="uid://dy7mn335sodxp" path="res://level_one.tscn" id="2_xdf2g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sjw2k"]
 size = Vector2(2048, 2048)
@@ -64,7 +64,7 @@ position = Vector2(960, 2104)
 shape = SubResource("RectangleShape2D_rlg7o")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="VirtualWindow/World/WorldBorder"]
-position = Vector2(-2048, 1080)
+position = Vector2(-1024, 500)
 shape = SubResource("RectangleShape2D_sjw2k")
 
 [node name="Walls" type="Node2D" parent="VirtualWindow/World"]

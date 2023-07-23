@@ -1,16 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://5hqtemf8yyb2"]
+[gd_scene load_steps=9 format=3 uid="uid://dy7mn335sodxp"]
 
 [ext_resource type="Texture2D" uid="uid://nhfylr68tgc8" path="res://windows.png" id="1_r2qa2"]
 [ext_resource type="Script" path="res://level_one.gd" id="1_vqpxh"]
 [ext_resource type="Texture2D" uid="uid://xqfn1gelasda" path="res://sprites/start.png" id="2_x58ik"]
-[ext_resource type="PackedScene" path="res://brick.tscn" id="2_y44di"]
+[ext_resource type="PackedScene" uid="uid://h04tov5g3i7t" path="res://brick.tscn" id="2_y44di"]
 [ext_resource type="Texture2D" uid="uid://b5ququx8r7n83" path="res://sprites/ball.png" id="6_5kx5g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wwj15"]
 size = Vector2(287, 46)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gsyje"]
-friction = 0.01
+friction = 0.1
 bounce = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ug526"]
@@ -30,7 +30,7 @@ offset_bottom = 755.0
 mouse_filter = 1
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(615, 311)
+position = Vector2(962, 604)
 texture = ExtResource("1_r2qa2")
 
 [node name="Actor" type="RigidBody2D" parent="."]
@@ -54,8 +54,11 @@ texture = ExtResource("2_x58ik")
 
 [node name="Ball" type="RigidBody2D" parent="."]
 position = Vector2(1129, 593)
+mass = 50.0
+inertia = 26.7
 physics_material_override = SubResource("PhysicsMaterial_gsyje")
 gravity_scale = 0.0
+contact_monitor = true
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
