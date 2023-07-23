@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dy7mn335sodxp"]
+[gd_scene load_steps=10 format=3 uid="uid://dy7mn335sodxp"]
 
 [ext_resource type="Texture2D" uid="uid://nhfylr68tgc8" path="res://windows.png" id="1_r2qa2"]
 [ext_resource type="Script" path="res://level_one.gd" id="1_vqpxh"]
 [ext_resource type="Texture2D" uid="uid://xqfn1gelasda" path="res://sprites/start.png" id="2_x58ik"]
 [ext_resource type="PackedScene" uid="uid://h04tov5g3i7t" path="res://brick.tscn" id="2_y44di"]
+[ext_resource type="Script" path="res://ball.gd" id="5_avoh8"]
 [ext_resource type="Texture2D" uid="uid://b5ququx8r7n83" path="res://sprites/ball.png" id="6_5kx5g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wwj15"]
@@ -59,6 +60,7 @@ inertia = 26.7
 physics_material_override = SubResource("PhysicsMaterial_gsyje")
 gravity_scale = 0.0
 contact_monitor = true
+script = ExtResource("5_avoh8")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
