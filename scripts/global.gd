@@ -43,3 +43,8 @@ func get_count_icons():
 	for row in Global.iconData:
 		icons_on_screen += row.count(true)
 	return icons_on_screen
+
+func _input(event):
+	# Quit game when esc key is pressed
+	if event.is_action_pressed("ui_cancel"):
+		get_tree().quit()
