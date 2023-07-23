@@ -34,7 +34,7 @@ position = Vector2(962, 604)
 texture = ExtResource("1_r2qa2")
 
 [node name="Actor" type="RigidBody2D" parent="."]
-position = Vector2(1162, 712)
+position = Vector2(1172, 773)
 collision_layer = 3
 collision_mask = 3
 mass = 37.44
@@ -53,7 +53,7 @@ scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_x58ik")
 
 [node name="Ball" type="RigidBody2D" parent="."]
-position = Vector2(1129, 593)
+position = Vector2(1122, 691)
 mass = 50.0
 inertia = 26.7
 physics_material_override = SubResource("PhysicsMaterial_gsyje")

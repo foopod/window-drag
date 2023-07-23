@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://dweaukumcs380"]
+[gd_scene load_steps=12 format=3 uid="uid://dweaukumcs380"]
 
 [ext_resource type="Script" path="res://scripts/virtual_window.gd" id="2_1h6b5"]
 [ext_resource type="PackedScene" uid="uid://dy7mn335sodxp" path="res://level_one.tscn" id="2_xdf2g"]
 [ext_resource type="Script" path="res://scripts/Bottom_Wall.gd" id="3_mfv8o"]
 [ext_resource type="PackedScene" uid="uid://h04tov5g3i7t" path="res://brick.tscn" id="4_shqs1"]
+[ext_resource type="Texture2D" uid="uid://bm588qftihs5y" path="res://sprites/xpwindowmenu.png" id="5_n7th2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sjw2k"]
 size = Vector2(2048, 2048)
@@ -34,6 +35,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 metadata/_edit_lock_ = true
+metadata/_edit_horizontal_guides_ = [281.0]
 
 [node name="VirtualWindow" type="Control" parent="."]
 unique_name_in_owner = true
@@ -94,7 +96,7 @@ freeze = true
 freeze_mode = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VirtualWindow/World/Walls/WallLeft"]
-position = Vector2(147, 328)
+position = Vector2(78, 295)
 shape = SubResource("RectangleShape2D_sjw2k")
 
 [node name="WallBottom" type="RigidBody2D" parent="VirtualWindow/World/Walls"]
@@ -107,7 +109,7 @@ freeze = true
 freeze_mode = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VirtualWindow/World/Walls/WallBottom"]
-position = Vector2(1422, 1733)
+position = Vector2(1410, 1779)
 shape = SubResource("RectangleShape2D_sjw2k")
 
 [node name="WallTop" type="RigidBody2D" parent="VirtualWindow/World/Walls"]
@@ -119,7 +121,7 @@ freeze = true
 freeze_mode = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VirtualWindow/World/Walls/WallTop"]
-position = Vector2(1558, -619)
+position = Vector2(1640, -629)
 shape = SubResource("RectangleShape2D_sjw2k")
 
 [node name="WallRight" type="RigidBody2D" parent="VirtualWindow/World/Walls"]
@@ -132,8 +134,19 @@ freeze = true
 freeze_mode = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VirtualWindow/World/Walls/WallRight"]
-position = Vector2(2574, 163)
+position = Vector2(2629, 156)
 shape = SubResource("RectangleShape2D_sjw2k")
+
+[node name="WindowMenu" type="NinePatchRect" parent="VirtualWindow"]
+layout_mode = 0
+offset_right = 2578.0
+offset_bottom = 32.0
+texture = ExtResource("5_n7th2")
+region_rect = Rect2(0, 0, 128, 32)
+patch_margin_left = 128
+patch_margin_right = 16
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 
