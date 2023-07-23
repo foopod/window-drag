@@ -37,3 +37,9 @@ func reset_window():
 	window.set_size(screen_size)
 	window.set_position(screen_position)
 	virtual_window.update_mouse_passthrough()
+	
+func get_count_icons():
+	var icons_on_screen = 0
+	for row in Global.iconData:
+		icons_on_screen += row.count(true)
+	return icons_on_screen

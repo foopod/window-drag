@@ -4,9 +4,12 @@ var rng = RandomNumberGenerator.new()
 
 @export var brick_scene: PackedScene
 
-@export var min_speed = 300
+@export var min_speed_no_icons = 600
+@export var min_speed_added_per_icon = -2
 
 func _integrate_forces(state):
+	# Min speed inversely related to no. of icons visible by linear function
+	var min_speed = min_speed_no_icons + Global.get_count_icons() * min_speed_added_per_icon
 	var velocity : Vector2 = state.get_linear_velocity()
 	var speed = velocity.length()
 	if speed < min_speed && speed != 0:
