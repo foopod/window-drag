@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dweaukumcs380"]
 
 [ext_resource type="Script" path="res://scripts/virtual_window.gd" id="2_1h6b5"]
-[ext_resource type="PackedScene" uid="uid://dy7mn335sodxp" path="res://level_one.tscn" id="2_xdf2g"]
+[ext_resource type="PackedScene" uid="uid://5hqtemf8yyb2" path="res://level_one.tscn" id="2_xdf2g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sjw2k"]
 size = Vector2(2048, 2048)
@@ -72,6 +72,8 @@ unique_name_in_owner = true
 
 [node name="WallLeft" type="RigidBody2D" parent="VirtualWindow/World/Walls"]
 unique_name_in_owner = true
+collision_layer = 2
+collision_mask = 2
 physics_material_override = SubResource("PhysicsMaterial_c0aus")
 can_sleep = false
 freeze = true
@@ -83,6 +85,8 @@ shape = SubResource("RectangleShape2D_sjw2k")
 
 [node name="WallBottom" type="RigidBody2D" parent="VirtualWindow/World/Walls"]
 unique_name_in_owner = true
+collision_layer = 2
+collision_mask = 2
 physics_material_override = SubResource("PhysicsMaterial_lhtgy")
 can_sleep = false
 freeze = true
@@ -94,6 +98,8 @@ shape = SubResource("RectangleShape2D_sjw2k")
 
 [node name="WallTop" type="RigidBody2D" parent="VirtualWindow/World/Walls"]
 unique_name_in_owner = true
+collision_layer = 2
+collision_mask = 2
 can_sleep = false
 freeze = true
 freeze_mode = 1
@@ -104,6 +110,8 @@ shape = SubResource("RectangleShape2D_sjw2k")
 
 [node name="WallRight" type="RigidBody2D" parent="VirtualWindow/World/Walls"]
 unique_name_in_owner = true
+collision_layer = 2
+collision_mask = 2
 physics_material_override = SubResource("PhysicsMaterial_nn202")
 can_sleep = false
 freeze = true
