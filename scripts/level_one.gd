@@ -3,7 +3,7 @@ extends Node2D
 @export var actor_scene: PackedScene
 @export var brick_scene: PackedScene
 
-var rowCount = 12
+var rowCount = 10
 var colCount = 19
 
 # Called when the node enters the scene tree for the first time.
@@ -24,7 +24,6 @@ func _ready():
 			else:
 				Global.iconData[row].append(false)
 	pass
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

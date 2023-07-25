@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://dweaukumcs380"]
+[gd_scene load_steps=12 format=3 uid="uid://dweaukumcs380"]
 
 [ext_resource type="Script" path="res://scripts/virtual_window.gd" id="2_1h6b5"]
 [ext_resource type="PackedScene" uid="uid://dy7mn335sodxp" path="res://scenes/level_one.tscn" id="2_xdf2g"]
+[ext_resource type="FontFile" uid="uid://qixtkab1it" path="res://fonts/at01.ttf" id="4_ppj26"]
 [ext_resource type="Texture2D" uid="uid://bm588qftihs5y" path="res://sprites/xpwindowmenu.png" id="5_n7th2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rlg7o"]
@@ -21,6 +22,10 @@ size = Vector2(8192, 2048)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nn202"]
 bounce = 0.2
+
+[sub_resource type="LabelSettings" id="LabelSettings_5djkw"]
+font = ExtResource("4_ppj26")
+font_size = 48
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -139,3 +144,38 @@ patch_margin_left = 128
 patch_margin_right = 16
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
+
+[node name="BlueScreen" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0.0784314, 0.643137, 1)
+
+[node name="ErrorMessage" type="Label" parent="BlueScreen"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 96.0
+offset_top = 76.0
+offset_right = 1281.0
+offset_bottom = 855.0
+text = "A problem has been detected and windowdrag has been shut down to prevent damage
+to your computer.
+
+ERR_ICON_OVERFLOW
+
+If this is the first time you've seen this error screen, press ESC to
+close the application and start it again. If this screen appears again, follow
+these steps:
+
+Check to make sure that your desktop is clean. Move extra icons to the recycling
+bin but keep it away from the bottom of your screen or the contents may spill out.
+
+If problems continue, check to make sure any new software is properly installed.
+If this is a new installation, ask your software manufacturer for any updates
+you might need.
+
+Technical Information:
+
+*** STOP: 0x000000EF (0x40F256D0, 0xc000005c, 0x00000000, 0x00000000)"
+label_settings = SubResource("LabelSettings_5djkw")

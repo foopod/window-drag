@@ -1,6 +1,7 @@
 extends Node
 
-var first_load : bool = true
+var is_game_over := false
+var first_load := true
 var window : Window
 var screen : int
 var screen_size : Vector2i
@@ -49,6 +50,17 @@ func get_count_icons():
 
 func get_virtual_window_center():
 	return virtual_window.get_position() + virtual_window.get_size() / 2
+
+func game_over():
+	is_game_over = false
+	var full_screen_size = DisplayServer.screen_get_size(window.current_screen)
+	window.set_size(full_screen_size)
+	window.set_position(DisplayServer.screen_get_position(window.current_screen))
+	window.mouse_passthrough_polygon = []
+	
+	var blue_screen = get_node("/root/Main/BlueScreen")
+	blue_screen.show()
+	blue_screen.set_size(full_screen_size)
 
 func _input(event):
 	# Quit game when esc key is pressed

@@ -33,3 +33,9 @@ func _on_body_entered(body):
 						var sprite = brick.get_child(0)
 						sprite.frame = rng.randi_range(0,9)
 						%BricksContainer.add_child(brick)
+						
+						# If we're adding an icon to the last row,
+						# then we start a countdown to game over. 
+						if row == Global.iconData.size() - 1 && !Global.is_game_over:
+							await get_tree().create_timer(3).timeout
+							Global.game_over()
