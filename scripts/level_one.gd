@@ -1,5 +1,6 @@
 extends Node2D
 
+@export var actor_scene: PackedScene
 @export var brick_scene: PackedScene
 
 var rowCount = 12
@@ -28,3 +29,11 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+func _on_play_area_2d_body_exited(body : Node):
+	if body.get_scene_file_path() == "res://scenes/actor.tscn":
+		body.queue_free()
+		var new_actor : RigidBody2D = actor_scene.instantiate()
+		new_actor.set_position(Global.get_virtual_window_center())
+		add_child(new_actor)
+		

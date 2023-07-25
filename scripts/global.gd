@@ -47,6 +47,9 @@ func get_count_icons():
 		icons_on_screen += row.count(true)
 	return icons_on_screen
 
+func get_virtual_window_center():
+	return virtual_window.get_position() + virtual_window.get_size() / 2
+
 func _input(event):
 	# Quit game when esc key is pressed
 	if event.is_action_pressed("ui_cancel"):

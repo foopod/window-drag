@@ -130,6 +130,7 @@ position = Vector2(2630, 665)
 shape = SubResource("RectangleShape2D_sjw2k")
 
 [node name="WindowMenu" type="NinePatchRect" parent="VirtualWindow"]
+layout_mode = 0
 offset_right = 2578.0
 offset_bottom = 32.0
 texture = ExtResource("5_n7th2")

@@ -2,13 +2,10 @@
 
 [ext_resource type="Script" path="res://scripts/level_one.gd" id="1_yaxt6"]
 [ext_resource type="PackedScene" uid="uid://h04tov5g3i7t" path="res://scenes/brick.tscn" id="2_f87gi"]
-[ext_resource type="Texture2D" uid="uid://xqfn1gelasda" path="res://sprites/start.png" id="2_x58ik"]
 [ext_resource type="Texture2D" uid="uid://nhfylr68tgc8" path="res://sprites/windows.png" id="3_w2qfj"]
+[ext_resource type="PackedScene" uid="uid://b7dhko1pr575h" path="res://scenes/actor.tscn" id="4_2x6ky"]
 [ext_resource type="Script" path="res://scripts/ball.gd" id="5_yekq3"]
 [ext_resource type="Texture2D" uid="uid://bfclpirgfhh2q" path="res://sprites/trash-icon.png" id="6_867le"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wwj15"]
-size = Vector2(287, 46)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gsyje"]
 friction = 0.1
@@ -17,8 +14,12 @@ bounce = 1.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_ug526"]
 radius = 23.0868
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s3fq0"]
+size = Vector2(3840, 2160)
+
 [node name="LevelOne" type="Node2D"]
 script = ExtResource("1_yaxt6")
+actor_scene = ExtResource("4_2x6ky")
 brick_scene = ExtResource("2_f87gi")
 
 [node name="VirtualWindowStart" type="Control" parent="."]
@@ -34,25 +35,7 @@ mouse_filter = 1
 position = Vector2(960, 600)
 texture = ExtResource("3_w2qfj")
 
-[node name="Actor" type="RigidBody2D" parent="."]
-texture_filter = 1
-position = Vector2(1233, 980)
-collision_layer = 3
-collision_mask = 3
-mass = 37.44
-center_of_mass_mode = 1
-center_of_mass = Vector2(0, -20)
-gravity_scale = 3.0
-can_sleep = false
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Actor"]
-position = Vector2(-0.5, -1)
-shape = SubResource("RectangleShape2D_wwj15")
-
-[node name="ActorSprite2D" type="Sprite2D" parent="Actor"]
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("2_x58ik")
+[node name="Actor" parent="." instance=ExtResource("4_2x6ky")]
 
 [node name="Ball" type="RigidBody2D" parent="."]
 position = Vector2(1134, 743)
@@ -77,4 +60,11 @@ texture = ExtResource("6_867le")
 [node name="BricksContainer" type="Node2D" parent="."]
 unique_name_in_owner = true
 
+[node name="PlayArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayArea2D"]
+position = Vector2(960, 540)
+shape = SubResource("RectangleShape2D_s3fq0")
+
 [connection signal="body_entered" from="Ball" to="Ball" method="_on_body_entered"]
+[connection signal="body_exited" from="PlayArea2D" to="." method="_on_play_area_2d_body_exited"]
