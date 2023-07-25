@@ -34,6 +34,9 @@ func reset_window():
 	screen_size = Vector2i(screen_scale_ratio * Vector2i(target_width, target_height))
 	screen_position = DisplayServer.screen_get_position(screen) + (usable_rect - screen_size) / 2
 	
+	# Windows systems will sometimes automatically set the mode to Window.MODE_EXCLUSIVE_FULLSCREEN
+	window.set_mode(Window.MODE_WINDOWED)
+	
 	window.set_size(screen_size)
 	window.set_position(screen_position)
 	virtual_window.update_mouse_passthrough()
