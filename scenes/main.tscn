@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dweaukumcs380"]
+[gd_scene load_steps=10 format=3 uid="uid://dweaukumcs380"]
 
 [ext_resource type="Script" path="res://scripts/virtual_window.gd" id="2_1h6b5"]
 [ext_resource type="PackedScene" uid="uid://dy7mn335sodxp" path="res://scenes/level_one.tscn" id="2_xdf2g"]
@@ -8,13 +8,16 @@
 size = Vector2(4096, 2048)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sjw2k"]
-size = Vector2(2048, 2048)
+size = Vector2(2048, 8192)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_c0aus"]
 bounce = 0.2
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lhtgy"]
 friction = 0.1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6svjr"]
+size = Vector2(8192, 2048)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nn202"]
 bounce = 0.2
@@ -85,7 +88,7 @@ freeze = true
 freeze_mode = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VirtualWindow/World/Walls/WallLeft"]
-position = Vector2(78, 700)
+position = Vector2(78, 667)
 shape = SubResource("RectangleShape2D_sjw2k")
 
 [node name="WallBottom" type="RigidBody2D" parent="VirtualWindow/World/Walls"]
@@ -98,8 +101,8 @@ freeze = true
 freeze_mode = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VirtualWindow/World/Walls/WallBottom"]
-position = Vector2(1360, 1979)
-shape = SubResource("RectangleShape2D_sjw2k")
+position = Vector2(1350, 1980)
+shape = SubResource("RectangleShape2D_6svjr")
 
 [node name="WallTop" type="RigidBody2D" parent="VirtualWindow/World/Walls"]
 unique_name_in_owner = true
@@ -110,8 +113,8 @@ freeze = true
 freeze_mode = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VirtualWindow/World/Walls/WallTop"]
-position = Vector2(1360, -429)
-shape = SubResource("RectangleShape2D_sjw2k")
+position = Vector2(1353, -430)
+shape = SubResource("RectangleShape2D_6svjr")
 
 [node name="WallRight" type="RigidBody2D" parent="VirtualWindow/World/Walls"]
 unique_name_in_owner = true
@@ -123,11 +126,10 @@ freeze = true
 freeze_mode = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VirtualWindow/World/Walls/WallRight"]
-position = Vector2(2629, 700)
+position = Vector2(2630, 665)
 shape = SubResource("RectangleShape2D_sjw2k")
 
 [node name="WindowMenu" type="NinePatchRect" parent="VirtualWindow"]
-layout_mode = 0
 offset_right = 2578.0
 offset_bottom = 32.0
 texture = ExtResource("5_n7th2")
@@ -136,5 +138,3 @@ patch_margin_left = 128
 patch_margin_right = 16
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
-
-[node name="Polygon2D" type="Polygon2D" parent="."]
